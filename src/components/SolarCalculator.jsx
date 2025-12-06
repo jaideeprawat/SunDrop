@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FiZap,
   FiLayers,
@@ -13,8 +13,15 @@ export default function SolarCalculator() {
   const [monthlyBillRange, setMonthlyBillRange] = useState("");
   const [userType, setUserType] = useState("Residential");
   const [result, setResult] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Residential dropdown → mapping
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   const residentialBillMapping = {
     "1000-2000": 1500,
     "2000-3000": 2500,
@@ -26,7 +33,6 @@ export default function SolarCalculator() {
     "8000-9000": 8500,
   };
 
-  // Commercial dropdown → mapping
   const commercialBillMapping = {
     "2000-3000": 2500,
     "3000-4000": 3500,
@@ -38,7 +44,6 @@ export default function SolarCalculator() {
     "9000-10000": 9500,
   };
 
-  // Plant size rule
   const residentialPlantSizeMapping = {
     "1000-2000": 3,
     "2000-3000": 4,
@@ -67,7 +72,7 @@ export default function SolarCalculator() {
 
   const getCostPerKW = (kw) => {
     if (kw === 3) return userType === "Residential" ? 69000 : 59900;
-    if (kw === 4) return userType === "Residential" ? 62000 : 54900;
+    if (kw === 4) return userType === " Residential" ? 62000 : 54900;
     if (kw === 5) return userType === "Residential" ? 63000 : 54900;
     if (kw === 6) return userType === "Residential" ? 61500 : 54900;
     if (kw === 7) return userType === "Residential" ? 59800 : 54900;
@@ -94,7 +99,6 @@ export default function SolarCalculator() {
 
     const avgBill = billMapping[monthlyBillRange];
     const ratePerUnit = userType === "Residential" ? 6 : 8;
-    // const monthlyUnits = Math.round(avgBill / ratePerUnit);
 
     const plantSize = plantSizeMapping[monthlyBillRange];
     const panelsNeeded = Math.ceil((plantSize * 1000) / panelWp);
@@ -106,21 +110,18 @@ export default function SolarCalculator() {
     const netCost = estimatedCostNumber - subsidy;
 
     const monthlyGeneration = Math.round(plantSize * 120);
-    // const dailyGeneration = Math.round(monthlyGeneration / 30);
 
     setResult({
-      // monthlyUnits,
       plantSize,
       panelsNeeded,
-      // rawArea,
       bufferedArea,
       estimatedCost: estimatedCostNumber.toLocaleString("en-IN"),
       subsidy,
       netCost,
       monthlyGeneration,
-      // dailyGeneration,
-      monthlySaving: Math.round(monthlyGeneration * ratePerUnit),
-      costPerKW: getCostPerKW(plantSize),
+      monthlySaving: Math.round(
+        monthlyGeneration * ratePerUnit
+      ),
     });
   };
 
@@ -136,7 +137,6 @@ export default function SolarCalculator() {
           boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
         }}
       >
-        {/* ===== Heading ===== */}
         <h2
           style={{
             textAlign: "center",
@@ -149,41 +149,14 @@ export default function SolarCalculator() {
           ⭐ Solar On-Grid System Calculator
         </h2>
 
-        <p
-          style={{
-            textAlign: "center",
-            marginBottom: 4,
-            fontSize: "16px",
-            color: "#475569",
-          }}
-        >
-          ⚡ Calculate your solar requirement, cost & subsidy instantly.
-        </p>
-
-        <p
-          style={{
-            textAlign: "center",
-            marginBottom: 20,
-            fontSize: "14px",
-            color: "#64748b",
-            maxWidth: "600px",
-            marginInline: "auto",
-          }}
-        >
-          Enter your electricity bill and get a complete breakdown — plant size,
-          number of panels, rooftop area, cost, subsidy & savings.
-        </p>
-
-        {/* ===== Input Row (Select + Select + Button) ===== */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr auto",
             gap: 10,
             marginBottom: 20,
+            gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr auto",
           }}
         >
-          {/* Bill select */}
           <select
             value={monthlyBillRange}
             onChange={(e) => setMonthlyBillRange(e.target.value)}
@@ -192,26 +165,26 @@ export default function SolarCalculator() {
               borderRadius: 8,
               border: "1px solid #d1d5db",
               fontSize: 14,
+              width: "100%",
             }}
           >
             <option value="">Monthly Bill</option>
 
             {userType === "Residential" &&
               Object.keys(residentialBillMapping).map((r) => (
-                <option key={r} value={r}>
+                <option value={r} key={r}>
                   ₹{r.replace("-", " – ")}
                 </option>
               ))}
 
             {userType === "Commercial" &&
               Object.keys(commercialBillMapping).map((r) => (
-                <option key={r} value={r}>
+                <option value={r} key={r}>
                   ₹{r.replace("-", " – ")}
                 </option>
               ))}
           </select>
 
-          {/* Type select */}
           <select
             value={userType}
             onChange={(e) => {
@@ -223,139 +196,132 @@ export default function SolarCalculator() {
               borderRadius: 8,
               border: "1px solid #d1d5db",
               fontSize: 14,
+              width: "100%",
             }}
           >
-            <option value="">Select Type</option>
             <option value="Residential">Residential</option>
             <option value="Commercial">Commercial</option>
           </select>
 
-          {/* Button */}
           <button
             onClick={calculate}
             style={{
               backgroundColor: "#0284c7",
               color: "#fff",
-              padding: "10px 18px",
+              padding: "12px",
               borderRadius: 8,
               fontWeight: 600,
               border: "none",
               cursor: "pointer",
-              whiteSpace: "nowrap",
-              transition: "0.3s",
+              width: "100%", // FULL WIDTH ON MOBILE
             }}
-            onMouseEnter={(e) => (e.target.style.background = "#facc15")}
-            onMouseLeave={(e) => (e.target.style.background = "#0284c7")}
           >
             Calculate
           </button>
         </div>
 
-        {/* ===== Results Section ===== */}
-        {/* ===== Results Section (CARD UI) ===== */}
-{result && (
-  <div
-    style={{
-      marginTop: 20,
-      background: "#ffffff",
-      padding: 22,
-      borderRadius: 14,
-      boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
-      border: "1px solid #e5e7eb",
-    }}
-  >
-    <h3
-      style={{
-        fontSize: 20,
-        fontWeight: 700,
-        marginBottom: 18,
-        color: "#0f172a",
-      }}
-    >
-      📊 Detailed Results
-    </h3>
-
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-        gap: 16,
-      }}
-    >
-      {[
-        ["Plant Size", result.plantSize + " kW", <FiLayers />],
-        ["Panels Needed", result.panelsNeeded + " pcs", <FaSolarPanel />],
-        ["Area Needed", result.bufferedArea + " sq ft", <FiGrid />],
-        ["Estimated Cost", "₹ " + result.estimatedCost, <FaRupeeSign />],
-        ["Subsidy", "₹ " + result.subsidy, <FiHome />],
-        [
-          "Net Cost After Subsidy",
-          "₹ " + result.netCost.toLocaleString("en-IN"),
-          <FiDollarSign />,
-        ],
-        [
-          "Monthly Generation",
-          result.monthlyGeneration + " units",
-          <FiCpu />,
-        ],
-        [
-          "Monthly Saving",
-          "₹ " + result.monthlySaving.toLocaleString("en-IN"),
-          <FaRupeeSign />,
-        ],
-      ].map(([label, value, icon], idx) => (
-        <div
-          key={idx}
-          style={{
-            padding: 16,
-            borderRadius: 12,
-            background: "#f9fafb",
-            border: "1px solid #e2e8f0",
-            boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
-          }}
-        >
+        {result && (
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-              marginBottom: 6,
-              color: "#475569",
-              fontSize: 13,
+              background: "#ffffff",
+              padding: 22,
+              borderRadius: 14,
+              boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
+              border: "1px solid #e5e7eb",
             }}
           >
-            <div
+            <h3
               style={{
-                width: 32,
-                height: 32,
-                borderRadius: "50%",
-                background: "#e0f2fe",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                color: "#0284c7",
+                fontSize: 20,
+                fontWeight: 700,
+                marginBottom: 18,
+                color: "#0f172a",
               }}
             >
-              {icon}
+              📊 Detailed Results
+            </h3>
+
+            <div
+              style={{
+                display: "grid",
+                            gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(auto-fit, minmax(240px, 1fr))",
+
+                gap: 16,
+              }}
+            >
+              {[
+                ["Plant Size", result.plantSize + " kW", <FiLayers />],
+                ["Panels Needed", result.panelsNeeded + " pcs", <FaSolarPanel />],
+                ["Area Needed", result.bufferedArea + " sq ft", <FiGrid />],
+                ["Estimated Cost", "₹ " + result.estimatedCost, <FaRupeeSign />],
+                ["Subsidy", "₹ " + result.subsidy, <FiHome />],
+                [
+                  "Net Cost After Subsidy",
+                  "₹ " + result.netCost.toLocaleString("en-IN"),
+                  <FiDollarSign />,
+                ],
+                [
+                  "Monthly Generation",
+                  result.monthlyGeneration + " units",
+                  <FiCpu />,
+                ],
+                [
+                  "Monthly Saving",
+                  "₹ " + result.monthlySaving.toLocaleString("en-IN"),
+                  <FaRupeeSign />,
+                ],
+              ].map(([label, value, icon], idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    padding: 16,
+                    borderRadius: 12,
+                    background: "#f9fafb",
+                    border: "1px solid #e2e8f0",
+                    boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
+                    minWidth: 0, 
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 8,
+                      marginBottom: 6,
+                      color: "#475569",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: 32,
+                        height: 32,
+                        borderRadius: "50%",
+                        background: "#e0f2fe",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "#0284c7",
+                      }}
+                    >
+                      {icon}
+                    </div>
+                    {label}
+                  </div>
+
+                  <div
+                    style={{
+                      fontSize: 22,
+                      fontWeight: 700,
+                      color: "#0f172a",
+                    }}
+                  >
+                    {value}
+                  </div>
+                </div>
+              ))}
             </div>
-            {label}
           </div>
-
-          <div
-            style={{
-              fontSize: 22,
-              fontWeight: 700,
-              color: "#0f172a",
-            }}
-          >
-            {value}
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-)}
-
+        )}
       </div>
     </section>
   );

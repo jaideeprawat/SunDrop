@@ -45,7 +45,7 @@ export default function Contact() {
           {/* Contact Info */}
           <div className="space-y-8">
             {[
-              { icon: <MapPin className="text-yellow-500 w-7 h-7" />, title: "Visit Us", desc: "45 Rajpur Road, Dehradun, Uttarakhand" },
+              { icon: <MapPin className="text-yellow-500 w-7 h-7" />, title: "Visit Us", desc: "📍 GF, Lane-1, Lakshya Enclave Block-B Near Gas Godown Banjarawala, Dehradun, Uttarakhand" },
               { icon: <Phone className="text-yellow-500 w-7 h-7" />, title: "Call Us", desc: "+91 730252798" },
               { icon: <Mail className="text-yellow-500 w-7 h-7" />, title: "Email", desc: "aquaraysolar@zohomail.in" },
               { icon: <Clock className="text-yellow-500 w-7 h-7" />, title: "Working Hours", desc: "Mon - Sat: 9 AM - 6 PM" },

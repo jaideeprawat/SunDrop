@@ -57,16 +57,16 @@ export default function Navbar() {
           scrolled ? "bg-white/95 shadow-md py-3" : "bg-transparent py-5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between relative">
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between relative
+  sm:px-4 px-2"> 
 
           {/* LEFT: Logo */}
           <Link to="/" onClick={() => scrollToSection("homeSection")}>
             <img
   src="/assets/aquaray.png"
   alt="logo"
-  className={`transition-all duration-500 ${
-    scrolled ? "h-24" : "h-28"
-  } w-auto max-h-28`}
+  className={`transition-all duration-500
+  ${scrolled ? "h-16" : "h-20"} w-auto`}
   />
 
             
