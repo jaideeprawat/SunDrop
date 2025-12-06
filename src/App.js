@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -15,6 +15,17 @@ import SolarWaterHeater from "./components/SolarWaterHeater";
 import SolarStreetLight from "./components/SolarStreetlight";
 
 function App() {
+  useEffect(() => {
+  const setVh = () => {
+    document.documentElement.style.setProperty(
+      "--vh",
+      `${window.innerHeight * 0.01}px`
+    );
+  };
+  setVh();
+  window.addEventListener("resize", setVh);
+  return () => window.removeEventListener("resize", setVh);
+}, []);
   return (
     <Router>
       <div className="font-sans">
@@ -27,7 +38,12 @@ function App() {
             path="/"
             element={
               <>
-                <div id="homeSection"><Hero /></div>
+                <div id="homeSection"><section
+    style={{ height: "calc(var(--vh, 1vh) * 100)" }}
+    className="flex items-center justify-center"
+  >
+    <Hero />
+  </section></div>
                 <div id="aboutSection"><About /></div>
                 <div id="calculatorSection"><SolarCalculator /></div>
                 <div id="servicesSection"><Services /></div>
