@@ -146,79 +146,78 @@ export default function SolarCalculator() {
             color: "#0f172a",
           }}
         >
-          ⭐ Solar On-Grid System Calculator
+          ⭐ Solar On-Grid System Calculator (Topcon panel)
         </h2>
 
         <div
-          style={{
-            display: "grid",
-            gap: 10,
-            marginBottom: 20,
-            gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr auto",
-          }}
-        >
-          <select
-            value={monthlyBillRange}
-            onChange={(e) => setMonthlyBillRange(e.target.value)}
-            style={{
-              padding: "10px",
-              borderRadius: 8,
-              border: "1px solid #d1d5db",
-              fontSize: 14,
-              width: "100%",
-            }}
-          >
-            <option value="">Monthly Bill</option>
+  style={{
+    display: "grid",
+    gap: isMobile ? 12 : 10, // Mobile me gap thoda bada (12px)
+    marginBottom: 20,
+    gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr auto",
+  }}
+>
+  <select
+    value={monthlyBillRange}
+    onChange={(e) => setMonthlyBillRange(e.target.value)}
+    style={{
+      padding: "10px",
+      borderRadius: 8,
+      border: "1px solid #d1d5db",
+      fontSize: 14,
+      width: "100%", // Mobile: full width
+    }}
+  >
+    <option value="">Monthly Bill</option>
+    {userType === "Residential" &&
+      Object.keys(residentialBillMapping).map((r) => (
+        <option value={r} key={r}>
+          ₹{r.replace("-", " – ")}
+        </option>
+      ))}
+    {userType === "Commercial" &&
+      Object.keys(commercialBillMapping).map((r) => (
+        <option value={r} key={r}>
+          ₹{r.replace("-", " – ")}
+        </option>
+      ))}
+  </select>
 
-            {userType === "Residential" &&
-              Object.keys(residentialBillMapping).map((r) => (
-                <option value={r} key={r}>
-                  ₹{r.replace("-", " – ")}
-                </option>
-              ))}
+  <select
+    value={userType}
+    onChange={(e) => {
+      setUserType(e.target.value);
+      setMonthlyBillRange("");
+    }}
+    style={{
+      padding: "10px",
+      borderRadius: 8,
+      border: "1px solid #d1d5db",
+      fontSize: 14,
+      width: "100%", // Mobile: full width
+    }}
+  >
+    <option value="Residential">Residential</option>
+    <option value="Commercial">Commercial</option>
+  </select>
 
-            {userType === "Commercial" &&
-              Object.keys(commercialBillMapping).map((r) => (
-                <option value={r} key={r}>
-                  ₹{r.replace("-", " – ")}
-                </option>
-              ))}
-          </select>
+  <button
+    onClick={calculate}
+    style={{
+      backgroundColor: "#0284c7",
+      color: "#fff",
+      padding: "12px",
+      borderRadius: 8,
+      fontWeight: 600,
+      border: "none",
+      cursor: "pointer",
+      width: "100%", // Mobile: full width
+    }}
+  >
+    Calculate
+  </button>
+</div>
 
-          <select
-            value={userType}
-            onChange={(e) => {
-              setUserType(e.target.value);
-              setMonthlyBillRange("");
-            }}
-            style={{
-              padding: "10px",
-              borderRadius: 8,
-              border: "1px solid #d1d5db",
-              fontSize: 14,
-              width: "100%",
-            }}
-          >
-            <option value="Residential">Residential</option>
-            <option value="Commercial">Commercial</option>
-          </select>
-
-          <button
-            onClick={calculate}
-            style={{
-              backgroundColor: "#0284c7",
-              color: "#fff",
-              padding: "12px",
-              borderRadius: 8,
-              fontWeight: 600,
-              border: "none",
-              cursor: "pointer",
-              width: "100%", // FULL WIDTH ON MOBILE
-            }}
-          >
-            Calculate
-          </button>
-        </div>
 
         {result && (
           <div

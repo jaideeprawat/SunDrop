@@ -45,7 +45,7 @@ export default function Contact() {
           {/* Contact Info */}
           <div className="space-y-8">
             {[
-              { icon: <MapPin className="text-yellow-500 w-7 h-7" />, title: "Visit Us", desc: "📍 GF, Lane-1, Lakshya Enclave Block-B Near Gas Godown Banjarawala, Dehradun, Uttarakhand" },
+              { icon: <MapPin className="text-yellow-500 w-7 h-7" />, title: "Visit Us", desc: "Lakshya Enclave, Banjarawala, Dehradun" },
               { icon: <Phone className="text-yellow-500 w-7 h-7" />, title: "Call Us", desc: "+91 7302528798" },
               { icon: <Mail className="text-yellow-500 w-7 h-7" />, title: "Email", desc: "aquaraysolar@zohomail.in" },
               { icon: <Clock className="text-yellow-500 w-7 h-7" />, title: "Working Hours", desc: "Mon - Sat: 9 AM - 6 PM" },
@@ -60,22 +60,62 @@ export default function Contact() {
             ))}
 
             {/* Social Links */}
-            <div>
-              <h4 className="font-semibold text-sky-800 mb-2">Follow Us</h4>
-              <div className="flex space-x-4">
-  <a href="https://www.facebook.com/profile.php?id=61584620100276" target="_blank" rel="noopener noreferrer">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" className="w-7 h-7" alt="Facebook"/>
-  </a>
+            {/* Social Links */}
+<div>
+  <h4 className="font-semibold text-sky-800 mb-2">Follow Us</h4>
+  <div className="flex space-x-4">
+    {/* Facebook */}
+    <a
+      href="https://www.facebook.com/profile.php?id=61584620100276"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ display: "inline-block", transition: "transform 0.2s" }}
+      onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.2)")}
+      onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+    >
+      <img
+        src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg"
+        className="w-7 h-7"
+        alt="Facebook"
+        style={{ filter: "invert(35%) sepia(99%) saturate(2640%) hue-rotate(205deg) brightness(92%) contrast(93%)" }}
+      />
+    </a>
 
-  <a href="https://www.instagram.com/aquaraysolar/" target="_blank" rel="noopener noreferrer">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" className="w-7 h-7" alt="Instagram"/>
-  </a>
+    {/* Instagram - Original Gradient */}
+    <a
+      href="https://www.instagram.com/aquaraysolar/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ display: "inline-block", transition: "transform 0.2s" }}
+      onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.2)")}
+      onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+    >
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
+        className="w-7 h-7"
+        alt="Instagram"
+      />
+    </a>
 
-  <a href="https://wa.me/917302528798" target="_blank" rel="noopener noreferrer">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" className="w-7 h-7" alt="WhatsApp"/>
-  </a>
+    {/* WhatsApp */}
+    <a
+      href="https://wa.me/917302528798?text=Hello%20Aquaray%20Solar%20Solutions"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ display: "inline-block", transition: "transform 0.2s" }}
+      onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.2)")}
+      onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+    >
+      <img
+        src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg"
+        className="w-7 h-7"
+        alt="WhatsApp"
+        style={{ filter: "invert(38%) sepia(96%) saturate(527%) hue-rotate(92deg) brightness(92%) contrast(91%)" }}
+      />
+    </a>
+  </div>
 </div>
-            </div>
+
           </div>
 
           {/* Contact Form */}
