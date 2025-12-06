@@ -61,19 +61,21 @@ export default function Navbar() {
   sm:px-4 px-2"> 
 
           {/* LEFT: Logo */}
-          <Link to="/" onClick={() => scrollToSection("homeSection")}>
-            {/* <img
-  src="/assets/aquaray.png"
-  alt="logo"
-  className={`transition-all duration-500
-  ${scrolled ? "h-16" : "h-20"} w-auto`}
-  /> */}
-  <img
+          <Link to="/" onClick={() => scrollToSection("homeSection")}
+          className="flex items-center h-full">
+<img
   src="/assets/aquaray.png"
   alt="Aquaray Solar Logo"
-  className={`transition-all duration-500 object-contain drop-shadow-md
-  ${scrolled ? "h-14 md:h-16" : "h-16 md:h-20"} w-auto`}
+  className={`transition-all duration-500 object-contain
+    ${scrolled ? "h-14 md:h-16" : "h-16 md:h-20"}
+  `}
+  style={{
+    maxWidth: "300px",
+    width: "100%"
+  }}
 />
+
+
 
   
 
@@ -89,6 +91,7 @@ export default function Navbar() {
             <button
               onClick={() => scrollToSection("homeSection")}
               className="hover:text-yellow-300 text-lg"
+              
             >
               Home
             </button>
