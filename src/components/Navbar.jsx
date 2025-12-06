@@ -62,12 +62,17 @@ export default function Navbar() {
 
           {/* LEFT: Logo */}
           <Link to="/" onClick={() => scrollToSection("homeSection")}>
-            <img
+           <img
   src="/assets/aquaray.png"
-  alt="logo"
-  className={`transition-all duration-500
-  ${scrolled ? "h-16" : "h-20"} w-auto`}
-  />
+  alt="Aquaray Solar Logo"
+  className="
+    w-auto object-contain
+    transition-all duration-300
+    h-16 sm:h-20 md:h-24 lg:h-28
+  "
+/>
+
+  
 
             
           </Link>
