@@ -20,7 +20,7 @@ export default function Contact() {
 
     // Temporary notice instead of sending email
     setNotice(
-      "📩 This email service is currently not active. Please contact us directly via phone: +91 730252798 or email: aquaraysolar@zohomail.in"
+      "📩 This email service is currently not active. Please contact us directly via phone: +91 7302528798 or email: aquaraysolar@zohomail.in"
     );
 
     // Optional: clear form
@@ -46,7 +46,7 @@ export default function Contact() {
           <div className="space-y-8">
             {[
               { icon: <MapPin className="text-yellow-500 w-7 h-7" />, title: "Visit Us", desc: "📍 GF, Lane-1, Lakshya Enclave Block-B Near Gas Godown Banjarawala, Dehradun, Uttarakhand" },
-              { icon: <Phone className="text-yellow-500 w-7 h-7" />, title: "Call Us", desc: "+91 730252798" },
+              { icon: <Phone className="text-yellow-500 w-7 h-7" />, title: "Call Us", desc: "+91 7302528798" },
               { icon: <Mail className="text-yellow-500 w-7 h-7" />, title: "Email", desc: "aquaraysolar@zohomail.in" },
               { icon: <Clock className="text-yellow-500 w-7 h-7" />, title: "Working Hours", desc: "Mon - Sat: 9 AM - 6 PM" },
             ].map((item, i) => (
@@ -71,7 +71,7 @@ export default function Contact() {
     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" className="w-7 h-7" alt="Instagram"/>
   </a>
 
-  <a href="https://wa.me/91730252798" target="_blank" rel="noopener noreferrer">
+  <a href="https://wa.me/917302528798" target="_blank" rel="noopener noreferrer">
     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" className="w-7 h-7" alt="WhatsApp"/>
   </a>
 </div>
