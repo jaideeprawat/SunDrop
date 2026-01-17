@@ -47,7 +47,6 @@ const SolarWaterHeater = () => {
         <h2 className="text-3xl font-semibold text-blue-700 mb-4">
           Benefits of Solar Water Heaters
         </h2>
-        
         <ul className="max-w-2xl mx-auto text-gray-700 space-y-3 text-left text-lg">
           <li>✅ Save up to 70% on electricity bills</li>
           <li>✅ Low maintenance and long operational life</li>

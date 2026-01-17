@@ -71,11 +71,11 @@ export default function SolarCalculator() {
   const bufferPercent = 12;
 
   const getCostPerKW = (kw) => {
-    if (kw === 3) return userType === "Residential" ? 69000 : 59900;
-    if (kw === 4) return userType === " Residential" ? 62000 : 54900;
-    if (kw === 5) return userType === "Residential" ? 63000 : 54900;
-    if (kw === 6) return userType === "Residential" ? 61500 : 54900;
-    if (kw === 7) return userType === "Residential" ? 59800 : 54900;
+    if (kw === 3) return userType === "Residential" ? 65000 : 59900;
+    if (kw === 4) return userType === "Residential" ? 62000 : 54900;
+    if (kw === 5) return userType === "Residential" ? 60000 : 54900;
+    if (kw === 6) return userType === "Residential" ? 59000 : 54900;
+    if (kw === 7) return userType === "Residential" ? 58700 : 54900;
     if (kw === 8) return userType === "Residential" ? 58500 : 54900;
     if (kw === 9) return userType === "Residential" ? 56500 : 54900;
     if (kw === 10) return userType === "Residential" ? 54900 : 54900;
