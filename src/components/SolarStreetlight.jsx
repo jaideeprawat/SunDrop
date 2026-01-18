@@ -1,5 +1,5 @@
 import React from "react";
-import { Sun, BatteryCharging, Lightbulb, Leaf, Wrench } from "lucide-react";
+import { Sun, BatteryCharging, Lightbulb, Leaf } from "lucide-react";
 
 export default function SolarStreetLight() {
   return (
