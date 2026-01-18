@@ -56,7 +56,7 @@ const Hero = () => {
           <div key={index} className="flex-shrink-0 w-full h-full relative">
             <img
               src={src}
-              alt={`Solar Image ${index + 1}`}
+              alt={`${index + 1}`}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-4xl font-bold">

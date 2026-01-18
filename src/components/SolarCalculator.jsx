@@ -96,7 +96,6 @@ export default function SolarCalculator() {
         ? residentialPlantSizeMapping
         : commercialPlantSizeMapping;
 
-    const avgBill = billMapping[monthlyBillRange];
     const ratePerUnit = userType === "Residential" ? 6 : 8;
 
     const plantSize = plantSizeMapping[monthlyBillRange];

@@ -25,7 +25,7 @@ export default function Navbar() {
 
     if (location.pathname !== "/") {
       // Navigate to home page first
-      navigate("/" + "#" + id);
+      navigate(`/#${id}`);
     } else {
       // Scroll on same page
       scroller.scrollTo(id, {
