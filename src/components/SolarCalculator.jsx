@@ -86,11 +86,6 @@ export default function SolarCalculator() {
   const calculate = () => {
     if (!monthlyBillRange || !userType) return;
 
-    const billMapping =
-      userType === "Residential"
-        ? residentialBillMapping
-        : commercialBillMapping;
-
     const plantSizeMapping =
       userType === "Residential"
         ? residentialPlantSizeMapping
