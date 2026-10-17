@@ -1,195 +1,245 @@
-import React from "react";
-import { Sun, BatteryCharging, Leaf, Building2 } from "lucide-react";
+import { useState } from "react";
+import {
+  Sun,
+  ShieldCheck,
+  BadgeCheck,
+  Phone,
+  Zap,
+} from "lucide-react";
 
-export default function SolarPowerPlant() {
+export default function AquraySolarLanding() {
+  const [selectedBrand, setSelectedBrand] = useState("");
+
+  const brands = [
+    "Adani Solar",
+    "Tata Power Solar",
+    "Waaree",
+    "Luminous",
+    "Havells",
+    "Microtek",
+    "ReNew",
+    "Eastman",
+  ];
+
   return (
-    
-    <section
-      id="solar-plant"
-      className="pt-24 bg-gradient-to-b from-sky-50 to-white text-gray-800"
-    >
-      {/* Hero Section */}
-      <div className="relative bg-sky-600 text-white py-16 px-6 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-3">
-          Solar Power Plants
-        </h1>
-        <p className="max-w-2xl mx-auto text-base md:text-lg text-sky-100">
-          Harness the power of the sun to generate clean, renewable, and
-          cost-effective electricity for your home or business.
-        </p>
-      </div>
+    <div className="bg-slate-50 min-h-screen">
 
-      {/* Intro Section */}
-      <div className="container mx-auto py-14 px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-semibold text-sky-700 mb-4">
-          Why Choose Solar Power?
-        </h2>
-        <p className="max-w-3xl mx-auto text-base md:text-lg text-gray-700 leading-relaxed">
-          Solar power plants convert sunlight into electricity using advanced
-          photovoltaic (PV) technology. They are efficient, eco-friendly, and
-          reduce your dependency on conventional energy sources while saving
-          costs in the long run.
-        </p>
-      </div>
+      {/* HERO */}
 
-      {/* Benefits Section */}
-      <div className="bg-white py-14 px-6">
-        <div className="container mx-auto grid md:grid-cols-4 gap-6 text-center">
-          {[
-            {
-              Icon: Sun,
-              title: "Renewable Energy",
-              desc: "100% clean and sustainable energy directly from the sun.",
-              color: "text-yellow-500",
-            },
-            {
-              Icon: BatteryCharging,
-              title: "Lower Bills",
-              desc: "Reduce electricity costs with self-generated solar power.",
-              color: "text-sky-600",
-            },
-            {
-              Icon: Leaf,
-              title: "Eco-Friendly",
-              desc: "Minimize your carbon footprint and protect the environment.",
-              color: "text-green-600",
-            },
-            {
-              Icon: Building2,
-              title: "For Homes & Industries",
-              desc: "Perfect solution for residential, commercial, or industrial setups.",
-              color: "text-sky-700",
-            },
-          ].map(({ Icon, title, desc, color }, i) => (
-            <div
-              key={i}
-              className="p-6 shadow-md rounded-xl hover:shadow-lg transition bg-white"
-            >
-              <Icon className={`mx-auto ${color}`} size={38} />
-              <h3 className="text-lg md:text-xl font-semibold mt-3">
-                {title}
-              </h3>
-              <p className="text-gray-600 mt-2 text-sm md:text-base">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-{/* Types of Solar Power Systems Section */}
-      <div className="bg-sky-50 py-16 px-6" id="solar-types">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-sky-700 mb-6">
-            Types of Solar Power Systems
-          </h2>
-          <p className="max-w-3xl mx-auto text-base md:text-lg text-gray-700 mb-12">
-            Depending on your energy needs, location, and grid access, you can
-            choose between On-Grid, Off-Grid, or Hybrid solar systems. Each
-            offers unique benefits and features.
-          </p>
+      <section className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white">
+        <div className="max-w-7xl mx-auto px-6 py-24">
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* On-Grid System */}
-            <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden">
-              <img
-                src="/assets/ongrid.png"
-                alt="On Grid Solar System"
-  className="w-full h-auto object-contain"
-              />
-              
-              <div className="p-6">
-                <h3 className="text-xl md:text-2xl font-semibold text-sky-700 mb-2">
-                  On-Grid Solar System
-                </h3>
-                <p className="text-gray-700 text-sm md:text-base mb-3">
-                  Connected directly to the electricity grid. It allows you to
-                  use solar power and send excess energy back to the grid
-                  through <strong>net metering</strong>.
-                </p>
-                <ul className="text-gray-600 text-left list-disc pl-5 space-y-1 text-sm md:text-base">
-                  <li>✔ Low installation cost (no batteries)</li>
-                  <li>✔ Earn money from surplus electricity</li>
-                  <li>❌ Does not work during power cuts</li>
-                </ul>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+            <div>
+              <span className="bg-yellow-400 text-black px-4 py-2 rounded-full font-semibold text-sm">
+                AQURAY SOLAR SOLUTION
+              </span>
+
+              <h1 className="text-5xl font-bold mt-6 leading-tight">
+                Reduce Your Electricity Bill With Smart Solar Rooftop Solutions
+              </h1>
+
+              <p className="mt-6 text-lg text-slate-300">
+                Compare top solar brands, choose your preferred kit and get a
+                free site survey from our expert team.
+              </p>
+
+              <div className="flex gap-4 mt-8 flex-wrap">
+                <button className="bg-yellow-400 text-black px-6 py-3 rounded-xl font-semibold">
+                  Get Free Quote
+                </button>
+
+                <button className="border border-white px-6 py-3 rounded-xl">
+                  Book Site Survey
+                </button>
               </div>
             </div>
 
-            {/* Off-Grid System */}
-            <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden">
+            <div>
               <img
-                src="/assets/offgrid.png"
-                alt="Off Grid Solar System"
-  className="w-full h-auto object-contain"
+                src="https://images.unsplash.com/photo-1509391366360-2e959784a276"
+                alt="solar"
+                className="rounded-3xl shadow-2xl"
               />
-              <div className="p-6">
-                <h3 className="text-xl md:text-2xl font-semibold text-sky-700 mb-2">
-                  Off-Grid Solar System
-                </h3>
-                <p className="text-gray-700 text-sm md:text-base mb-3">
-                  Works independently from the grid using{" "}
-                  <strong>batteries</strong> to store solar power for later use
-                  — perfect for remote areas or backup.
-                </p>
-                <ul className="text-gray-600 text-left list-disc pl-5 space-y-1 text-sm md:text-base">
-                  <li>✔ Works during power cuts</li>
-                  <li>✔ Full energy independence</li>
-                  <li>❌ Higher cost due to batteries</li>
-                </ul>
-              </div>
             </div>
 
-            {/* Hybrid System */}
-            <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden">
-              <img
-                src="/assets/hybridgrid.png"
-                alt="Hybrid Solar System"
-  className="w-full h-auto object-contain"
-              />
-              <div className="p-6">
-                <h3 className="text-xl md:text-2xl font-semibold text-sky-700 mb-2">
-                  Hybrid Solar System
-                </h3>
-                <p className="text-gray-700 text-sm md:text-base mb-3">
-                  Combines the best of both worlds —{" "}
-                  <strong>grid connection + battery backup</strong>. Use solar
-                  power, store excess, and export the rest.
-                </p>
-                <ul className="text-gray-600 text-left list-disc pl-5 space-y-1 text-sm md:text-base">
-                  <li>✔ Works during power cuts</li>
-                  <li>✔ Battery + Grid combo for stability</li>
-                  <li>❌ Slightly higher cost</li>
-                </ul>
-              </div>
-            </div>
           </div>
         </div>
-      </div>
-      {/* Image Section */}
-      <div className="relative my-14">
-        <img
-          src="/assets/solar2.png"
-          alt="Solar Power Plant"
-          className="w-full h-[380px] object-cover rounded-none md:rounded-lg shadow-lg"
-        />
-        <div className="absolute inset-0 bg-black/30 flex items-center justify-center text-white text-2xl md:text-3xl font-semibold">
-          Powering a Brighter Tomorrow
-        </div>
-      </div>
+      </section>
 
-      {/* CTA Section */}
-      <div className="text-center py-14 bg-sky-600 text-white">
-        <h2 className="text-2xl md:text-3xl font-bold mb-3">
-          Ready to Install a Solar Power Plant?
+      {/* TRUST */}
+
+      <section className="max-w-7xl mx-auto px-6 py-20">
+
+        <h2 className="text-4xl font-bold text-center">
+          Why Choose Aquray Solar Solution
         </h2>
-        <p className="mb-5 text-sky-100 text-base md:text-lg">
-          Our experts provide complete solutions — from consultation to
-          installation and maintenance.
-        </p>
-        <a
-          href="#contact"
-          className="bg-yellow-400 text-sky-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition"
-        >
-          Contact Us Today
-        </a>
-      </div>
-    </section>
+
+        <div className="grid md:grid-cols-4 gap-6 mt-12">
+
+          <div className="bg-white rounded-3xl p-6 shadow">
+            <BadgeCheck className="text-green-600" size={40} />
+            <h3 className="font-bold mt-4">15+ Installations</h3>
+            <p className="text-slate-500 mt-2">
+              Successfully completed projects.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl p-6 shadow">
+            <Sun className="text-yellow-500" size={40} />
+            <h3 className="font-bold mt-4">Top Brands</h3>
+            <p className="text-slate-500 mt-2">
+              Multiple trusted solar options.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl p-6 shadow">
+            <ShieldCheck className="text-blue-600" size={40} />
+            <h3 className="font-bold mt-4">Warranty Support</h3>
+            <p className="text-slate-500 mt-2">
+              Long-term customer assistance.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl p-6 shadow">
+            <Zap className="text-orange-500" size={40} />
+            <h3 className="font-bold mt-4">Free Survey</h3>
+            <p className="text-slate-500 mt-2">
+              Personalized solar planning.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* BRAND SELECTOR */}
+
+      <section className="bg-white py-20">
+
+        <div className="max-w-7xl mx-auto px-6">
+
+          <h2 className="text-4xl font-bold text-center">
+            Choose Your Preferred Solar Brand
+          </h2>
+
+          <p className="text-center text-slate-500 mt-3">
+            Select your favorite brand and get a customized quotation.
+          </p>
+
+          <div className="grid md:grid-cols-4 gap-6 mt-12">
+
+            {brands.map((brand) => (
+              <button
+                key={brand}
+                onClick={() => setSelectedBrand(brand)}
+                className={`rounded-3xl p-8 border-2 transition-all text-left
+                ${
+                  selectedBrand === brand
+                    ? "border-green-500 bg-green-50"
+                    : "border-slate-200 hover:border-yellow-400"
+                }`}
+              >
+                <h3 className="font-bold text-lg">{brand}</h3>
+
+                <p className="text-slate-500 mt-2">
+                  Click to select this brand.
+                </p>
+              </button>
+            ))}
+
+          </div>
+
+          {selectedBrand && (
+            <div className="bg-green-100 text-green-700 mt-10 p-4 rounded-xl text-center font-semibold">
+              Selected Brand: {selectedBrand}
+            </div>
+          )}
+
+        </div>
+
+      </section>
+
+      {/* PROJECTS */}
+
+      <section className="max-w-7xl mx-auto px-6 py-20">
+
+        <h2 className="text-4xl font-bold text-center">
+          Recent Installations
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-6 mt-12">
+
+          {[1, 2, 3,4].map((item) => (
+            <div
+              key={item}
+              className="bg-slate-200 h-72 rounded-3xl flex items-center justify-center"
+            >
+              Project Photo {item}
+            </div>
+          ))}
+
+        </div>
+
+      </section>
+
+      {/* FORM */}
+
+      <section className="bg-slate-900 text-white py-20">
+
+        <div className="max-w-3xl mx-auto px-6">
+
+          <h2 className="text-4xl font-bold text-center">
+            Book Free Site Survey
+          </h2>
+          <div className="bg-white text-black rounded-3xl p-8 mt-10">
+
+\
+            <div className="grid gap-4">
+
+              <input
+                className="border rounded-xl p-3"
+                placeholder="Your Name"
+              />
+
+              <input
+                className="border rounded-xl p-3"
+                placeholder="Mobile Number"
+              />
+
+              <input
+                className="border rounded-xl p-3"
+                placeholder="City"
+              />
+
+              <input
+                className="border rounded-xl p-3"
+                value={selectedBrand}
+                placeholder="Selected Brand"
+                readOnly
+              />
+
+              <button className="bg-yellow-400 text-black py-4 rounded-xl font-bold">
+                Get Solar Recommendation
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* FLOATING WHATSAPP */}
+
+      <a
+        href="https://wa.me/919999999999"
+        className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg"
+      >
+        <Phone />
+      </a>
+
+    </div>
   );
 }

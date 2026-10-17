@@ -44,8 +44,8 @@ function App() {
   >
     <Hero />
   </section></div>
-                <div id="aboutSection"><About /></div>
                 <div id="calculatorSection"><SolarCalculator /></div>
+                                <div id="aboutSection"><About /></div>
                 <div id="servicesSection"><Services /></div>
                 <div id="contactSection"><Contact /></div>
                 <div id="footerSection"><Footer /></div>

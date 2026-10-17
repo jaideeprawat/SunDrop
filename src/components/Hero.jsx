@@ -7,9 +7,11 @@ import { ChevronLeft, ChevronRight } from "lucide-react"; // for arrow icons
 //    process.env.PUBLIC_URL +"/assets/solar3.png",
 // ];
 const images = [
+  
+  process.env.PUBLIC_URL + "/assets/diwali_slide.png",
+    process.env.PUBLIC_URL + "/assets/residence.jpeg",
   process.env.PUBLIC_URL + "/assets/solar1.png",
   process.env.PUBLIC_URL + "/assets/solar2.png",
-  process.env.PUBLIC_URL + "/assets/solar3.png",
 ];
 
 
@@ -59,9 +61,9 @@ const Hero = () => {
               alt={`${index + 1}`}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-4xl font-bold">
+            {/* <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-4xl font-bold">
               Sustainable Solar Energy
-            </div>
+            </div> */}
           </div>
         ))}
       </div>

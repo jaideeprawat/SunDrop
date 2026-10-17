@@ -46,7 +46,9 @@ export default function Navbar() {
   } bg-gradient-to-r from-sky-600 via-sky-500 to-cyan-500 text-white`}
 >
   <div className="max-w-7xl mx-auto flex items-center justify-center text-sm font-semibold tracking-wide">
-    <span className="animate-pulse">🔥 Get Govt. Solar Subsidy ₹85,800 – Limited Slots!</span>
+    {/* <span className="animate-pulse">🔥 Get Govt. Solar Subsidy ₹85,800 – Limited Slots!</span> */}
+    {/* 🪔 Aquaray Solar Solutions • Diwali Mega Gift Dhamaka 🪔 */}
+        <span className="animate-pulse">🪔 Aquaray Solar Solutions • Diwali Mega Gift Dhamaka 🪔 Subsidy ₹85,800</span>
   </div>
 </div>
 
@@ -105,7 +107,7 @@ export default function Navbar() {
               onClick={() => scrollToSection("calculatorSection")}
               className="hover:text-yellow-300 text-lg"
             >
-              Calculator
+              🛵 Diwali Mega Giveaway
             </button>
             <button
               onClick={() => scrollToSection("servicesSection")}
@@ -176,7 +178,7 @@ export default function Navbar() {
               onClick={() => scrollToSection("calculatorSection")}
               className="block px-6 py-2 hover:bg-sky-100 w-full text-left"
             >
-              Calculator
+              🛵 Diwali Mega Giveaway
             </button>
             <button
               onClick={() => scrollToSection("servicesSection")}
