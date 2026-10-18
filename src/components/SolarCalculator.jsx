@@ -193,46 +193,86 @@
 //   },
 // };
 
-import { useState } from "react";
 
+import { useState } from "react";
 const WHATSAPP = "917302528798";
 
 const prizes = [
   {
-    rank: "1st PRIZE",
+    rank: "1st PRIZE | प्रथम पुरस्कार",
     title: "Electric Scooty",
-    detail: "1 Winner",
+    hindi: "इलेक्ट्रिक स्कूटी",
+    detail: "1 Winner | 1 विजेता",
     emoji: "🛵",
     color: "from-rose-500 to-orange-500",
   },
   {
-    rank: "2nd PRIZE",
+    rank: "2nd PRIZE | द्वितीय पुरस्कार",
     title: "LCD / Smart TV",
-    detail: "1 Winner",
+    hindi: "एलसीडी / स्मार्ट टीवी",
+    detail: "1 Winner | 1 विजेता",
     emoji: "📺",
     color: "from-blue-500 to-indigo-600",
   },
   {
-    rank: "3rd PRIZE",
+    rank: "3rd PRIZE | तृतीय पुरस्कार",
     title: "Smartphone",
-    detail: "1 Winner",
+    hindi: "स्मार्टफोन",
+    detail: "1 Winner | 1 विजेता",
     emoji: "📱",
     color: "from-emerald-500 to-teal-600",
   },
   {
-    rank: "GIFT PRIZE",
+    rank: "GIFT PRIZE | उपहार",
     title: "Induction Cooktop",
-    detail: "27 Winners • Any Brand",
+    hindi: "इंडक्शन कुकटॉप",
+    detail: "27 Winners | 27 विजेता",
     emoji: "🎁",
     color: "from-purple-500 to-fuchsia-600",
   },
 ];
 
 const benefits = [
-  { icon: "☀️", title: "Solar Solutions", text: "Bill ke hisaab se guidance" },
-  { icon: "₹85800", title: "Subsidy Guidance", text: "Eligibility ki jaankari" },
-  { icon: "🏠", title: "Free Site Visit", text: "Subject to service area" },
-  { icon: "🛡️", title: "Expert Support", text: "Installation se related help" },
+  {
+    icon: "☀️",
+    title: "Solar Solutions",
+    hindi: "सोलर समाधान",
+    text: "आपके बिजली बिल के अनुसार मार्गदर्शन",
+  },
+  {
+    icon: "₹",
+    title: "Subsidy Guidance",
+    hindi: "सब्सिडी की जानकारी",
+    text: "योजना और पात्रता संबंधी जानकारी",
+  },
+  {
+    icon: "🏠",
+    title: "Free Site Visit",
+    hindi: "निःशुल्क साइट विजिट",
+    text: "सेवा क्षेत्र और उपलब्धता के अनुसार",
+  },
+  {
+    icon: "🛡️",
+    title: "Expert Support",
+    hindi: "विशेषज्ञ सहायता",
+    text: "सोलर सिस्टम और इंस्टॉलेशन संबंधी मदद",
+  },
+];
+
+const billOptions = [
+  "₹1,000 से कम",
+  "₹1,000 – ₹2,000",
+  "₹2,000 – ₹3,000",
+  "₹3,000 – ₹5,000",
+  "₹5,000 से अधिक",
+];
+
+const capacities = [
+  "2 kW",
+  "3 kW",
+  "4 kW",
+  "5 kW",
+  "अभी तय नहीं है",
 ];
 
 export default function DiwaliOffer() {
@@ -243,33 +283,39 @@ export default function DiwaliOffer() {
     bill: "",
     capacity: "3 kW",
   });
+
   const [error, setError] = useState("");
 
   function update(e) {
-    setForm((old) => ({ ...old, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+
+    setForm((old) => ({
+      ...old,
+      [name]: value,
+    }));
   }
 
   function submit(e) {
     e.preventDefault();
 
     if (!/^[6-9]\d{9}$/.test(form.phone)) {
-      setError("Sahi 10-digit mobile number enter karein.");
+      setError("कृपया सही 10 अंकों का मोबाइल नंबर दर्ज करें।");
       return;
     }
 
     setError("");
 
     const message = [
-      "Namaste Aquaray Solar Solutions!",
-      "Mujhe Diwali Mega Gift Dhamaka offer mein interest hai.",
+      "नमस्ते Aquaray Solar Solutions!",
+      "मुझे दिवाली मेगा गिफ्ट धमाका ऑफर की जानकारी चाहिए।",
       "",
-      `Name: ${form.name}`,
-      `Mobile: ${form.phone}`,
-      `City / Area: ${form.city}`,
-      `Monthly Bill: ${form.bill}`,
-      `Solar Capacity: ${form.capacity}`,
+      `नाम: ${form.name}`,
+      `मोबाइल: ${form.phone}`,
+      `शहर / क्षेत्र: ${form.city}`,
+      `मासिक बिजली बिल: ${form.bill}`,
+      `सोलर क्षमता: ${form.capacity}`,
       "",
-      "Please contact me with offer details and eligibility terms.",
+      "कृपया मुझे सोलर ऑफर, पात्रता और गिफ्ट कैंपेन की शर्तों की जानकारी दें।",
     ].join("\n");
 
     window.open(
@@ -283,66 +329,87 @@ export default function DiwaliOffer() {
     "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100";
 
   return (
-    <main className="min-h-screen overflow-hidden bg-white text-slate-900">
-      {/* Announcement bar */}
-      {/* <div className="bg-blue-950 px-4 py-2 text-center text-xs font-semibold text-white sm:text-sm">
-        🪔 Aquaray Solar Solutions • Diwali Mega Gift Dhamaka 🪔
-      </div> */}
-      
-
-      {/* Navigation */}
+    <main
+      id="home"
+      className="min-h-screen overflow-hidden bg-white pb-20 text-slate-900 sm:pb-0"
+    >
+      {/* Navigation / मुख्य मेन्यू */}
       <header className="sticky top-0 z-40 border-b border-slate-100 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
-          <a href="#home" className="leading-tight">
-            <span className="text-xl font-black tracking-tight text-blue-900 sm:text-2xl">
+          {/* <a href="#home" className="leading-tight">
+            <span className="block text-xl font-black tracking-tight text-blue-900 sm:text-2xl">
               ☀ AQUARAY
             </span>
+
             <span className="block pl-7 text-[10px] font-bold tracking-[2px] text-slate-600">
               SOLAR SOLUTIONS
             </span>
-          </a>
+          </a> */}
 
           <a
             href="#register"
-            className="rounded-full bg-amber-400 px-4 py-2.5 text-sm font-extrabold text-blue-950 shadow-sm transition hover:bg-amber-300"
+            className="rounded-full bg-amber-400 px-4 py-2.5 text-center text-sm font-extrabold text-blue-950 shadow-sm transition hover:bg-amber-300"
           >
-            Register Now →
+            रजिस्टर करें / Register →
           </a>
         </div>
       </header>
 
-              <div className="mb-12">
-      <img
-        src="/assets/diwali_slide.png"
-        alt="Solar Street Light Types Overview"
-      />
-    </div>
-      {/* Hero */}
-      <section
-        id="home"
-        className="relative overflow-hidden bg-gradient-to-br from-sky-50 via-white to-amber-50"
-      >
+      {/* Optional Diwali banner image */}
+      <div className="mx-auto max-w-7xl px-3 pt-4 sm:px-6">
+        <img
+          src="/assets/aquaray_diwali_pot.png"
+          alt="Aquaray Solar Solutions Diwali Mega Offer | दिवाली मेगा ऑफर"
+          className="h-auto w-full rounded-2xl object-cover"
+          onError={(e) => {
+            e.currentTarget.style.display = "none";
+          }}
+        />
+      </div>
+      <div className="mx-auto max-w-7xl px-3 pt-4 sm:px-6">
+        <img
+          src="/assets/residence.jpeg"
+          alt="Aquaray Solar Solutions Diwali Mega Offer | दिवाली मेगा ऑफर"
+          className="h-auto w-full rounded-2xl object-cover"
+          onError={(e) => {
+            e.currentTarget.style.display = "none";
+          }}
+        />
+      </div>
+
+      {/* Hero / मुख्य ऑफर */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-sky-50 via-white to-amber-50">
         <div className="pointer-events-none absolute -right-20 top-8 h-64 w-64 rounded-full bg-amber-200/40 blur-3xl" />
         <div className="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-sky-200/50 blur-3xl" />
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-2 lg:py-20">
           <div>
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-300 bg-amber-100 px-4 py-2 text-xs font-extrabold uppercase tracking-wide text-amber-900">
-              ✨ Special Festive Campaign ✨
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-300 bg-amber-100 px-4 py-2 text-xs font-extrabold text-amber-900">
+              🪔 दिवाली स्पेशल ऑफर | FESTIVE SPECIAL 🪔
             </div>
 
             <p className="mb-2 font-bold text-blue-800">
-              Is Diwali Ghar-Ghar Solar!
+              इस दिवाली, घर-घर सोलर!
             </p>
 
             <h1 className="text-4xl font-black leading-[1.08] tracking-tight text-blue-950 sm:text-5xl lg:text-6xl">
               Diwali Mega
-              <span className="block text-amber-500">Gift Dhamaka!</span>
+              <span className="block text-amber-500">
+                Gift Dhamaka!
+              </span>
+              <span className="mt-3 block text-2xl leading-tight text-blue-900 sm:text-3xl">
+                दिवाली मेगा गिफ्ट धमाका!
+              </span>
             </h1>
 
             <p className="mt-5 max-w-xl text-base leading-7 text-slate-600 sm:text-lg">
-              Solar installation ke liye enquiry karein aur Aquaray ke
-              festive gift campaign ke baare mein jaanein.
+              सोलर सिस्टम के बारे में जानकारी लें और Aquaray Solar Solutions
+              के दिवाली गिफ्ट कैंपेन की शर्तों एवं पात्रता के बारे में जानें।
+            </p>
+
+            <p className="mt-3 max-w-xl text-sm leading-6 text-slate-500">
+              Explore solar solutions and learn about our festive gift
+              campaign, eligibility and applicable terms.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -350,11 +417,12 @@ export default function DiwaliOffer() {
                 href="#register"
                 className="rounded-xl bg-blue-900 px-6 py-4 font-extrabold text-white shadow-lg shadow-blue-900/20 transition hover:bg-blue-800"
               >
-                🎁 Offer Ke Liye Register Karein
+                🎁 ऑफर के लिए रजिस्टर करें
               </a>
+
               <a
                 href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
-                  "Namaste Aquaray, mujhe Diwali Solar Offer ki details chahiye."
+                  "नमस्ते Aquaray Solar Solutions, मुझे दिवाली सोलर ऑफर की जानकारी चाहिए।"
                 )}`}
                 target="_blank"
                 rel="noreferrer"
@@ -365,15 +433,16 @@ export default function DiwaliOffer() {
             </div>
 
             <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-600">
-              <span>✓ Solar Consultation</span>
-              <span>✓ Subsidy Guidance*</span>
-              <span>✓ Festive Gifts*</span>
+              <span>✓ सोलर मार्गदर्शन</span>
+              <span>✓ सब्सिडी की जानकारी*</span>
+              <span>✓ गिफ्ट कैंपेन की जानकारी*</span>
             </div>
           </div>
 
-          {/* Hero visual */}
+          {/* Gift highlight / गिफ्ट हाइलाइट */}
           <div className="relative mx-auto w-full max-w-lg">
             <div className="absolute inset-5 rounded-full bg-amber-200/60 blur-3xl" />
+
             <div className="relative rounded-[2rem] border border-amber-200 bg-white/90 p-5 shadow-2xl shadow-blue-900/10 sm:p-8">
               <div className="flex items-center justify-between">
                 <span className="rounded-full bg-blue-100 px-3 py-1.5 text-xs font-extrabold text-blue-900">
@@ -384,26 +453,37 @@ export default function DiwaliOffer() {
 
               <div className="py-6 text-center">
                 <div className="text-7xl sm:text-8xl">🎁</div>
+
                 <h2 className="mt-4 text-3xl font-black text-blue-950 sm:text-4xl">
                   30 GIFTS
                 </h2>
+
                 <p className="mt-2 text-lg font-bold text-amber-600">
-                  30 Lucky Winners
+                  30 उपहार | 30 संभावित विजेता
                 </p>
+
                 <p className="mt-2 text-sm text-slate-500">
-                  Solar lagao • Bijli bachao • Future sanwaaro
+                  सोलर लगाएँ • बिजली बचाएँ • भविष्य सँवारें
                 </p>
               </div>
 
               <div className="grid grid-cols-4 gap-2 border-t border-slate-100 pt-5 text-center">
-                {["🛵", "📺", "📱", "🎁"].map((icon, i) => (
+                {[
+                  ["🛵", "Scooty", "स्कूटी"],
+                  ["📺", "TV", "टीवी"],
+                  ["📱", "Phone", "फोन"],
+                  ["🎁", "Induction", "इंडक्शन"],
+                ].map(([icon, english, hindi]) => (
                   <div
-                    key={icon}
-                    className="rounded-xl bg-sky-50 py-3"
+                    key={english}
+                    className="rounded-xl bg-sky-50 px-1 py-3"
                   >
                     <div className="text-2xl">{icon}</div>
                     <p className="mt-1 text-[10px] font-bold text-blue-950 sm:text-xs">
-                      {["Scooty", "TV", "Phone", "Induction"][i]}
+                      {english}
+                    </p>
+                    <p className="mt-1 text-[10px] text-slate-600">
+                      {hindi}
                     </p>
                   </div>
                 ))}
@@ -413,19 +493,20 @@ export default function DiwaliOffer() {
         </div>
       </section>
 
-      {/* Prize section */}
+      {/* Prizes / उपहार */}
       <section id="gifts" className="bg-white px-5 py-14 sm:px-8 sm:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto mb-10 max-w-2xl text-center">
             <p className="text-sm font-extrabold uppercase tracking-[3px] text-amber-600">
               Diwali Gift Collection
             </p>
+
             <h2 className="mt-3 text-3xl font-black text-blue-950 sm:text-4xl">
-              Aapke Liye Bumper Gifts!
+              आपके लिए शानदार उपहार!
             </h2>
+
             <p className="mt-3 text-slate-600">
-              3 grand prizes aur 27 additional gift prizes — campaign
-              ki applicable conditions ke adheen.
+              Bumper Gifts for You! जानें गिफ्ट कैंपेन की शर्तें और पात्रता।
             </p>
           </div>
 
@@ -436,7 +517,7 @@ export default function DiwaliOffer() {
                 className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
               >
                 <div
-                  className={`bg-gradient-to-r ${prize.color} px-4 py-3 text-center text-sm font-black tracking-wide text-white`}
+                  className={`bg-gradient-to-r ${prize.color} px-3 py-3 text-center text-xs font-black tracking-wide text-white sm:text-sm`}
                 >
                   {prize.rank}
                 </div>
@@ -451,7 +532,12 @@ export default function DiwaliOffer() {
                   <h3 className="text-lg font-extrabold text-blue-950">
                     {prize.title}
                   </h3>
-                  <p className="mt-2 inline-flex rounded-full bg-amber-100 px-3 py-1.5 text-xs font-bold text-amber-900">
+
+                  <p className="mt-1 font-semibold text-slate-600">
+                    {prize.hindi}
+                  </p>
+
+                  <p className="mt-3 inline-flex rounded-full bg-amber-100 px-3 py-1.5 text-xs font-bold text-amber-900">
                     {prize.detail}
                   </p>
                 </div>
@@ -460,22 +546,26 @@ export default function DiwaliOffer() {
           </div>
 
           <p className="mt-5 text-center text-xs leading-5 text-slate-500">
-            Prize images are illustrative. Actual models, brands, selection
-            process and eligibility will be governed by the published
-            campaign terms.
+            गिफ्ट के चित्र केवल उदाहरण के लिए हैं। वास्तविक मॉडल, ब्रांड,
+            विजेता चयन और वितरण प्रकाशित नियमों के अनुसार होंगे।
           </p>
         </div>
       </section>
 
-      {/* Benefits */}
-      <section className="bg-sky-50 px-5 py-12 sm:px-8">
+      {/* Solar benefits / सोलर के फायदे */}
+      <section id="benefits" className="bg-sky-50 px-5 py-12 sm:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 text-center">
             <h2 className="text-2xl font-black text-blue-950 sm:text-3xl">
               Solar Lagane Ke Fayde
             </h2>
+
+            <p className="mt-2 text-lg font-bold text-blue-800">
+              सोलर लगाने के फायदे
+            </p>
+
             <p className="mt-2 text-sm text-slate-600">
-              Apne ghar ke liye sahi solar system choose karein.
+              अपने घर की जरूरत के अनुसार सही सोलर सिस्टम चुनें।
             </p>
           </div>
 
@@ -486,10 +576,16 @@ export default function DiwaliOffer() {
                 className="rounded-2xl border border-sky-100 bg-white p-4 text-center shadow-sm sm:p-6"
               >
                 <div className="text-3xl">{item.icon}</div>
+
                 <h3 className="mt-3 font-extrabold text-blue-950">
                   {item.title}
                 </h3>
-                <p className="mt-1 text-xs leading-5 text-slate-500 sm:text-sm">
+
+                <p className="mt-1 text-sm font-semibold text-blue-800">
+                  {item.hindi}
+                </p>
+
+                <p className="mt-2 text-xs leading-5 text-slate-500 sm:text-sm">
                   {item.text}
                 </p>
               </div>
@@ -498,38 +594,46 @@ export default function DiwaliOffer() {
         </div>
       </section>
 
-      {/* Registration */}
+      {/* Registration / पंजीकरण */}
       <section
         id="register"
-        className="scroll-mt-24 bg-gradient-to-br from-blue-950 via-blue-900 to-sky-900 px-5 py-14 text-white sm:px-8 sm:py-20"
+        className="scroll-mt-28 bg-gradient-to-br from-blue-950 via-blue-900 to-sky-900 px-5 py-14 text-white sm:px-8 sm:py-20"
       >
         <div className="mx-auto grid max-w-6xl items-start gap-10 lg:grid-cols-2">
           <div className="lg:pt-8">
             <span className="rounded-full bg-amber-400 px-4 py-2 text-xs font-black uppercase tracking-widest text-blue-950">
-              Register Now
+              Register Now | अभी रजिस्टर करें
             </span>
+
             <h2 className="mt-6 text-3xl font-black leading-tight sm:text-5xl">
-              Apni Details Bharein,
+              अपनी जानकारी भरें,
               <span className="block text-amber-400">
-                Offer Ki Jaankari Paayein!
+                ऑफर की जानकारी पाएँ!
               </span>
             </h2>
+
             <p className="mt-5 max-w-lg leading-7 text-blue-100">
-              Form fill karein. WhatsApp par message ready hoga, jise
-              send karke hamari team se offer, solar system aur eligibility
-              ke baare mein pooch sakte hain.
+              फॉर्म भरें। WhatsApp खुलेगा, जहाँ से आप हमारी टीम को अपनी
+              जानकारी भेजकर सोलर ऑफर, गिफ्ट कैंपेन और पात्रता के बारे में
+              पूछ सकते हैं।
+            </p>
+
+            <p className="mt-3 max-w-lg text-sm leading-6 text-blue-200">
+              Fill out the form to contact our team on WhatsApp for solar
+              offers and campaign information.
             </p>
 
             <div className="mt-8 space-y-4">
               {[
-                "Aapke electricity bill ke hisaab se solar guidance",
-                "Applicable subsidy aur finance information",
-                "Diwali gift campaign ki terms aur eligibility",
+                "आपके बिजली बिल के अनुसार सोलर मार्गदर्शन",
+                "लागू सब्सिडी और फाइनेंस की जानकारी",
+                "दिवाली गिफ्ट कैंपेन की शर्तें और पात्रता",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-400 font-black text-blue-950">
                     ✓
                   </span>
+
                   <p className="text-sm leading-6 text-blue-50">{item}</p>
                 </div>
               ))}
@@ -544,21 +648,30 @@ export default function DiwaliOffer() {
               <h3 className="text-2xl font-black text-blue-950">
                 Diwali Offer Registration
               </h3>
+
+              <p className="mt-1 text-lg font-bold text-blue-800">
+                दिवाली ऑफर पंजीकरण
+              </p>
+
               <p className="mt-2 text-sm text-slate-500">
-                * Required fields fill karein.
+                * वाले सभी फील्ड भरना अनिवार्य है।
               </p>
             </div>
 
             <div className="space-y-4">
               <div>
-                <label htmlFor="name" className="mb-2 block text-sm font-bold">
-                  Full Name *
+                <label
+                  htmlFor="name"
+                  className="mb-2 block text-sm font-bold"
+                >
+                  Full Name / पूरा नाम *
                 </label>
+
                 <input
                   id="name"
                   name="name"
                   className={inputClass}
-                  placeholder="Apna poora naam"
+                  placeholder="अपना पूरा नाम लिखें"
                   value={form.name}
                   onChange={update}
                   autoComplete="name"
@@ -567,9 +680,13 @@ export default function DiwaliOffer() {
               </div>
 
               <div>
-                <label htmlFor="phone" className="mb-2 block text-sm font-bold">
-                  Mobile Number *
+                <label
+                  htmlFor="phone"
+                  className="mb-2 block text-sm font-bold"
+                >
+                  Mobile Number / मोबाइल नंबर *
                 </label>
+
                 <input
                   id="phone"
                   name="phone"
@@ -577,7 +694,7 @@ export default function DiwaliOffer() {
                   type="tel"
                   inputMode="numeric"
                   maxLength={10}
-                  placeholder="10-digit mobile number"
+                  placeholder="10 अंकों का मोबाइल नंबर"
                   value={form.phone}
                   onChange={update}
                   autoComplete="tel-national"
@@ -586,14 +703,18 @@ export default function DiwaliOffer() {
               </div>
 
               <div>
-                <label htmlFor="city" className="mb-2 block text-sm font-bold">
-                  City / Area *
+                <label
+                  htmlFor="city"
+                  className="mb-2 block text-sm font-bold"
+                >
+                  City / Area / शहर या क्षेत्र *
                 </label>
+
                 <input
                   id="city"
                   name="city"
                   className={inputClass}
-                  placeholder="Jaise Haridwar, Roorkee, Dehradun"
+                  placeholder="जैसे हरिद्वार, रुड़की, देहरादून"
                   value={form.city}
                   onChange={update}
                   autoComplete="address-level2"
@@ -602,9 +723,13 @@ export default function DiwaliOffer() {
               </div>
 
               <div>
-                <label htmlFor="bill" className="mb-2 block text-sm font-bold">
-                  Monthly Electricity Bill *
+                <label
+                  htmlFor="bill"
+                  className="mb-2 block text-sm font-bold"
+                >
+                  Monthly Electricity Bill / मासिक बिजली बिल *
                 </label>
+
                 <select
                   id="bill"
                   name="bill"
@@ -613,12 +738,12 @@ export default function DiwaliOffer() {
                   onChange={update}
                   required
                 >
-                  <option value="">Bill range select karein</option>
-                  <option>Below ₹1,000</option>
-                  <option>₹1,000 – ₹2,000</option>
-                  <option>₹2,000 – ₹3,000</option>
-                  <option>₹3,000 – ₹5,000</option>
-                  <option>Above ₹5,000</option>
+                  <option value="">बिजली बिल चुनें</option>
+                  {billOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
                 </select>
               </div>
 
@@ -627,8 +752,9 @@ export default function DiwaliOffer() {
                   htmlFor="capacity"
                   className="mb-2 block text-sm font-bold"
                 >
-                  Interested Solar Capacity
+                  Interested Solar Capacity / सोलर क्षमता
                 </label>
+
                 <select
                   id="capacity"
                   name="capacity"
@@ -636,17 +762,20 @@ export default function DiwaliOffer() {
                   value={form.capacity}
                   onChange={update}
                 >
-                  <option>2 kW</option>
-                  <option>3 kW</option>
-                  <option>4 kW</option>
-                  <option>5 kW</option>
-                  <option>Not Sure - Need Advice</option>
+                  {capacities.map((capacity) => (
+                    <option key={capacity} value={capacity}>
+                      {capacity}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
 
             {error && (
-              <p role="alert" className="mt-3 text-sm font-semibold text-red-600">
+              <p
+                role="alert"
+                className="mt-3 text-sm font-semibold text-red-600"
+              >
                 {error}
               </p>
             )}
@@ -655,69 +784,96 @@ export default function DiwaliOffer() {
               type="submit"
               className="mt-6 w-full rounded-xl bg-emerald-600 px-5 py-4 font-extrabold text-white shadow-lg transition hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-200"
             >
-              WhatsApp Par Register Karein →
+              WhatsApp पर जानकारी भेजें →
             </button>
 
             <p className="mt-4 text-center text-xs leading-5 text-slate-500">
-              Submit karne se WhatsApp khulega. Registration message tabhi
-              bheja jayega jab aap WhatsApp par Send press karenge.
+              बटन दबाने पर WhatsApp खुलेगा। आपका संदेश तभी भेजा जाएगा जब
+              आप WhatsApp में Send दबाएँगे। यह फॉर्म अपने आप डेटाबेस में
+              जानकारी सेव नहीं करता।
             </p>
           </form>
         </div>
       </section>
 
-      {/* Terms */}
-      <section className="bg-amber-50 px-5 py-10 sm:px-8">
+      {/* Terms / नियम और शर्तें */}
+      <section
+        id="terms"
+        className="scroll-mt-28 bg-amber-50 px-5 py-10 sm:px-8"
+      >
         <div className="mx-auto max-w-5xl rounded-2xl border border-amber-200 bg-white p-5 sm:p-7">
-          <h2 className="text-lg font-black text-blue-950">
+          <h2 className="text-xl font-black text-blue-950">
             Offer Terms & Conditions
           </h2>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-600">
+
+          <p className="mt-1 font-bold text-blue-800">
+            ऑफर के नियम एवं शर्तें
+          </p>
+
+          <ul className="mt-4 list-disc space-y-3 pl-5 text-sm leading-6 text-slate-600">
             <li>
-              Campaign mein total 30 gifts proposed hain: 1 electric scooty,
-              1 TV, 1 smartphone aur 27 induction cooktops.
+              प्रस्तावित गिफ्ट सूची में 1 इलेक्ट्रिक स्कूटी, 1 टीवी,
+              1 स्मार्टफोन और 27 इंडक्शन कुकटॉप शामिल हैं।
             </li>
+
             <li>
-              Registration apne aap kisi prize ki guarantee nahi hai.
-              Eligibility, winner selection, campaign dates aur prize
-              distribution ke final rules Aquaray ke published terms ke
-              mutabik honge.
+              पंजीकरण करने से किसी पुरस्कार के जीतने की गारंटी नहीं है।
+              विजेता चयन, पात्रता, अभियान की अवधि और पुरस्कार वितरण के
+              नियम आधिकारिक रूप से प्रकाशित किए जाने चाहिए।
             </li>
+
             <li>
-              Prize model, brand aur availability badal sakti hai; final
-              details campaign start hone se pehle confirm karein.
+              गिफ्ट के मॉडल, ब्रांड और उपलब्धता में बदलाव हो सकता है।
+              अंतिम विवरण अभियान के आधिकारिक नियमों के अनुसार होगा।
             </li>
+
             <li>
-              Solar subsidy aur financing government scheme, bank approval
-              aur individual eligibility par depend karti hai.
+              सोलर सब्सिडी सरकारी योजना, स्वीकृति और व्यक्तिगत पात्रता पर
+              निर्भर करती है। सब्सिडी या लोन की मंजूरी की गारंटी नहीं है।
             </li>
+
             <li>
-              Free site visit service area aur appointment availability
-              ke adheen hai.
+              निःशुल्क साइट विजिट सेवा क्षेत्र और अपॉइंटमेंट की उपलब्धता
+              के अनुसार होगी।
+            </li>
+
+            <li>
+              कृपया पंजीकरण करने से पहले अभियान के आधिकारिक नियम पढ़ें।
+              पुरस्कार जीतने और सोलर खरीदने की शर्तें स्पष्ट रूप से
+              प्रकाशित की जानी चाहिए।
             </li>
           </ul>
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer / संपर्क */}
       {/* <footer className="bg-slate-950 px-5 py-10 text-white sm:px-8">
         <div className="mx-auto grid max-w-7xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <div>
             <a href="#home" className="text-2xl font-black text-sky-400">
               ☀ AQUARAY
             </a>
+
             <p className="mt-1 text-xs font-bold tracking-[3px] text-slate-300">
               SOLAR SOLUTIONS
             </p>
+
+            <p className="mt-1 text-sm font-semibold text-slate-300">
+              एक्वारे सोलर सॉल्यूशंस
+            </p>
+
             <p className="mt-4 max-w-xs text-sm leading-6 text-slate-400">
               Clean Energy | Better Tomorrow
               <br />
-              Solar lagao, bijli bachao, future sanwaaro.
+              स्वच्छ ऊर्जा, बेहतर कल।
+              <br />
+              सोलर लगाएँ, बिजली बचाएँ, भविष्य सँवारें।
             </p>
           </div>
 
           <div>
-            <h3 className="font-bold">Contact Us</h3>
+            <h3 className="font-bold">Contact Us | संपर्क करें</h3>
+
             <a
               className="mt-3 block text-sm text-slate-300 hover:text-amber-400"
               href={`https://wa.me/${WHATSAPP}`}
@@ -726,6 +882,7 @@ export default function DiwaliOffer() {
             >
               WhatsApp: 7302528798
             </a>
+
             <a
               className="mt-2 block text-sm text-slate-300 hover:text-amber-400"
               href="https://aquaraysolar.in/"
@@ -734,6 +891,7 @@ export default function DiwaliOffer() {
             >
               www.aquaraysolar.in
             </a>
+
             <a
               className="mt-2 block break-all text-sm text-slate-300 hover:text-amber-400"
               href="mailto:aquaraysolar@gmail.com"
@@ -743,33 +901,82 @@ export default function DiwaliOffer() {
           </div>
 
           <div>
-            <h3 className="font-bold">Explore</h3>
-            <a href="#gifts" className="mt-3 block text-sm text-slate-300 hover:text-amber-400">
-              Gift Collection
+            <h3 className="font-bold">Quick Links | जरूरी लिंक</h3>
+
+            <a
+              href="#gifts"
+              className="mt-3 block text-sm text-slate-300 hover:text-amber-400"
+            >
+              Gift Collection / उपहार
             </a>
-            <a href="#register" className="mt-2 block text-sm text-slate-300 hover:text-amber-400">
-              Register for Offer
+
+            <a
+              href="#benefits"
+              className="mt-2 block text-sm text-slate-300 hover:text-amber-400"
+            >
+              Solar Benefits / सोलर फायदे
             </a>
-            <div className="mt-4 flex flex-wrap gap-3 text-sm">
-              <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" className="text-sky-300 hover:text-white">Facebook</a>
-              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="text-sky-300 hover:text-white">Instagram</a>
-              <a href="https://www.youtube.com/" target="_blank" rel="noreferrer" className="text-sky-300 hover:text-white">YouTube</a>
+
+            <a
+              href="#register"
+              className="mt-2 block text-sm text-slate-300 hover:text-amber-400"
+            >
+              Register for Offer / पंजीकरण
+            </a>
+
+            <a
+              href="#terms"
+              className="mt-2 block text-sm text-slate-300 hover:text-amber-400"
+            >
+              Terms & Conditions / नियम
+            </a>
+
+            <div className="mt-4 flex flex-wrap gap-4 text-sm">
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-sky-300 hover:text-white"
+              >
+                Facebook
+              </a>
+
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-sky-300 hover:text-white"
+              >
+                Instagram
+              </a>
+
+              <a
+                href="https://www.youtube.com/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-sky-300 hover:text-white"
+              >
+                YouTube
+              </a>
             </div>
           </div>
         </div>
 
         <div className="mx-auto mt-8 max-w-7xl border-t border-white/10 pt-5 text-center text-xs text-slate-500">
-          © {new Date().getFullYear()} Aquaray Solar Solutions. All rights reserved.
+          © {new Date().getFullYear()} Aquaray Solar Solutions.
+          All rights reserved.
+          <br />
+          एक्वारे सोलर सॉल्यूशंस। सर्वाधिकार सुरक्षित।
         </div>
       </footer> */}
 
-      {/* Mobile bottom CTA */}
+      {/* Mobile bottom CTA / मोबाइल रजिस्ट्रेशन बटन */}
       <div className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 p-3 backdrop-blur sm:hidden">
         <a
           href="#register"
           className="block rounded-xl bg-amber-400 px-4 py-3 text-center font-extrabold text-blue-950 shadow-md"
         >
-          🎁 Register for Diwali Offer
+          🎁 दिवाली ऑफर के लिए रजिस्टर करें
         </a>
       </div>
     </main>

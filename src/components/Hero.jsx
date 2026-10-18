@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"; // for arrow icons
 //    process.env.PUBLIC_URL +"/assets/solar3.png",
 // ];
 const images = [
-  
+  process.env.PUBLIC_URL + "/assets/electric_scoty.png",
   process.env.PUBLIC_URL + "/assets/solar1.png",
   process.env.PUBLIC_URL + "/assets/solar2.png",
 ];
