@@ -376,7 +376,67 @@ export default function DiwaliOffer() {
           }}
         />
       </div>
+ <section className="bg-gradient-to-b from-orange-50 to-white px-4 py-10 sm:py-14">
+      <div className="mx-auto max-w-md overflow-hidden rounded-3xl border-2 border-amber-300 bg-white shadow-xl">
 
+        <div className="bg-gradient-to-r from-orange-600 to-red-600 px-5 py-4 text-center text-white">
+          <p className="text-sm font-bold tracking-widest">
+            🪔 AQUARAY SOLAR • दिवाली ऑफर 2026
+          </p>
+          <h2 className="mt-2 text-3xl font-black">
+            30 ग्राहक, 30 उपहार!
+          </h2>
+        </div>
+
+        <div className="p-6 text-center">
+          <span className="inline-block rounded-full bg-amber-100 px-5 py-2 font-extrabold text-amber-800">
+            🥇 प्रथम पुरस्कार
+          </span>
+
+          <div className="my-6 rounded-3xl bg-gradient-to-br from-amber-100 via-orange-50 to-red-100 px-4 py-7">
+            <div className="text-8xl drop-shadow-md sm:text-9xl">
+              🛵
+            </div>
+            <p className="mt-3 text-sm font-bold text-orange-700">
+              आपके घर आ सकती है...
+            </p>
+            <h3 className="mt-1 text-3xl font-black text-slate-900">
+              इलेक्ट्रिक स्कूटी
+            </h3>
+          </div>
+
+          <div className="rounded-2xl bg-slate-900 p-4 text-white">
+            <p className="text-xl font-extrabold text-amber-400">
+              1 भाग्यशाली विजेता
+            </p>
+            <p className="mt-2 text-sm text-slate-200">
+              और बाकी 29 ग्राहकों को भी उपहार! 🎁
+            </p>
+          </div>
+
+          <div className="mt-5 rounded-xl border border-green-200 bg-green-50 p-4">
+            <p className="text-lg font-black text-green-800">
+              🎁 हर पात्र ग्राहक को उपहार
+            </p>
+            <p className="mt-1 text-sm text-green-700">
+              30 पात्र रजिस्ट्रेशन के प्रत्येक बैच में
+            </p>
+          </div>
+
+          <a
+            href="#register"
+            className="mt-6 block rounded-xl bg-orange-600 px-6 py-4 text-lg font-extrabold text-white shadow-lg transition hover:bg-orange-700"
+          >
+            अभी रजिस्ट्रेशन करें →
+          </a>
+
+          <p className="mt-4 text-xs leading-5 text-slate-500">
+            नियम एवं शर्तें लागू। उपहार की पात्रता और विजेता चयन
+            योजना के नियमों के अनुसार होगा।
+          </p>
+        </div>
+      </div>
+    </section>
       {/* Hero / मुख्य ऑफर */}
       <section className="relative overflow-hidden bg-gradient-to-br from-sky-50 via-white to-amber-50">
         <div className="pointer-events-none absolute -right-20 top-8 h-64 w-64 rounded-full bg-amber-200/40 blur-3xl" />
@@ -386,11 +446,17 @@ export default function DiwaliOffer() {
           <div>
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-300 bg-amber-100 px-4 py-2 text-xs font-extrabold text-amber-900">
               🪔 दिवाली स्पेशल ऑफर | FESTIVE SPECIAL 🪔
+              
             </div>
 
             <p className="mb-2 font-bold text-blue-800">
               इस दिवाली, घर-घर सोलर!
+
             </p>
+
+{/* Complete Diwali Scheme / पूरी स्कीम की जानकारी */}
+
+
 
             <h1 className="text-4xl font-black leading-[1.08] tracking-tight text-blue-950 sm:text-5xl lg:text-6xl">
               Diwali Mega
