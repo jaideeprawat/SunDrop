@@ -863,7 +863,7 @@ export default function DiwaliOffer() {
       </section>
 
       {/* Terms / नियम और शर्तें */}
-      <section
+      {/* <section
         id="terms"
         className="scroll-mt-28 bg-amber-50 px-5 py-10 sm:px-8"
       >
@@ -910,7 +910,133 @@ export default function DiwaliOffer() {
             </li>
           </ul>
         </div>
-      </section>
+      </section> */}
+
+{/* Offer Terms & Conditions */}
+<section
+  id="terms"
+  className="bg-slate-50 px-4 py-12 sm:px-8 sm:py-16"
+>
+  <div className="mx-auto max-w-4xl">
+
+    <div className="mb-8 text-center">
+      <span className="inline-block rounded-full bg-amber-100 px-4 py-2 text-xs font-extrabold text-amber-800">
+        🪔 AQUARAY SOLAR • DIWALI 2026
+      </span>
+
+      <h2 className="mt-4 text-2xl font-black text-slate-900 sm:text-4xl">
+        ऑफर के नियम एवं शर्तें
+      </h2>
+
+      <p className="mt-3 text-sm text-slate-600 sm:text-base">
+        दिवाली ऑफर में भाग लेने से पहले कृपया नियम ध्यान से पढ़ें।
+      </p>
+    </div>
+
+    <div className="space-y-5 rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
+
+      {/* Gifts */}
+      <div>
+        <h3 className="text-lg font-extrabold text-slate-900">
+          🎁 1. उपहारों की सूची
+        </h3>
+
+        <p className="mt-2 leading-7 text-slate-600">
+          प्रत्येक 30 पात्र ग्राहकों के बैच के लिए प्रस्तावित उपहार:
+        </p>
+
+        <ul className="mt-3 space-y-2 text-slate-700">
+          <li>🛵 1 इलेक्ट्रिक स्कूटी — प्रथम पुरस्कार</li>
+          <li>📺 1 एलसीडी / एलईडी टीवी — द्वितीय पुरस्कार</li>
+          <li>📱 1 स्मार्टफोन — तृतीय पुरस्कार</li>
+          <li>🍳 27 इंडक्शन कुकटॉप — अन्य 27 विजेताओं के लिए</li>
+        </ul>
+      </div>
+
+      <div className="border-t border-slate-100 pt-5">
+        <h3 className="text-lg font-extrabold text-slate-900">
+          📋 2. पात्रता एवं पंजीकरण
+        </h3>
+        <p className="mt-2 leading-7 text-slate-600">
+          प्रतिभागियों को अभियान की निर्धारित पात्रता शर्तें पूरी करनी होंगी।
+          केवल पंजीकरण करने से किसी विशेष पुरस्कार को जीतने की गारंटी नहीं
+          मिलती। प्रत्येक बैच में पात्रता और विजेता चयन आधिकारिक नियमों
+          के अनुसार होगा।
+        </p>
+      </div>
+
+      <div className="border-t border-slate-100 pt-5">
+        <h3 className="text-lg font-extrabold text-slate-900">
+          🎉 3. विजेता चयन एवं उपहार वितरण
+        </h3>
+        <p className="mt-2 leading-7 text-slate-600">
+          विजेताओं के चयन की प्रक्रिया, चयन की तारीख और उपहार वितरण की
+          समय-सीमा अभियान के आधिकारिक नियमों के अनुसार घोषित की जाएगी।
+          उपहार प्राप्त करने के लिए विजेताओं को आवश्यक सत्यापन पूरा करना होगा।
+        </p>
+      </div>
+
+      <div className="border-t border-slate-100 pt-5">
+        <h3 className="text-lg font-extrabold text-slate-900">
+          🛍️ 4. उपहारों से संबंधित शर्तें
+        </h3>
+        <p className="mt-2 leading-7 text-slate-600">
+          उपहारों के ब्रांड, मॉडल और उपलब्धता का विवरण आधिकारिक नियमों
+          में दिया जाएगा। किसी बदलाव की आवश्यकता होने पर प्रतिभागियों को
+          इसकी जानकारी दी जाएगी।
+        </p>
+      </div>
+
+      <div className="border-t border-slate-100 pt-5">
+        <h3 className="text-lg font-extrabold text-slate-900">
+          ☀️ 5. सोलर सब्सिडी एवं फाइनेंस
+        </h3>
+        <p className="mt-2 leading-7 text-slate-600">
+          सरकारी सब्सिडी संबंधित योजना, ग्राहक की पात्रता और विभागीय
+          स्वीकृति पर निर्भर करती है। लोन की मंजूरी बैंक या वित्तीय संस्था
+          के नियमों के अनुसार होगी। सब्सिडी या लोन की मंजूरी की गारंटी
+          नहीं दी जाती।
+        </p>
+      </div>
+
+      <div className="border-t border-slate-100 pt-5">
+        <h3 className="text-lg font-extrabold text-slate-900">
+          🏠 6. निःशुल्क साइट विजिट
+        </h3>
+        <p className="mt-2 leading-7 text-slate-600">
+          निःशुल्क साइट विजिट निर्धारित सेवा क्षेत्र और अपॉइंटमेंट की
+          उपलब्धता के अनुसार प्रदान की जाएगी।
+        </p>
+      </div>
+
+      <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4">
+        <h3 className="font-extrabold text-amber-900">
+          महत्वपूर्ण सूचना
+        </h3>
+        <p className="mt-2 text-sm leading-6 text-amber-900">
+          पंजीकरण करने से पहले अभियान के आधिकारिक नियम अवश्य पढ़ें।
+          पुरस्कारों की संख्या, पात्रता, विजेता चयन और वितरण से संबंधित
+          सभी शर्तें प्रतिभागियों के लिए स्पष्ट रूप से उपलब्ध कराई जाएंगी।
+        </p>
+      </div>
+
+      <div className="text-center">
+        <a
+          href="#register"
+          className="inline-flex w-full items-center justify-center rounded-xl bg-orange-600 px-6 py-3 font-extrabold text-white transition hover:bg-orange-700 sm:w-auto"
+        >
+          रजिस्ट्रेशन पर वापस जाएँ →
+        </a>
+      </div>
+
+    </div>
+
+    <p className="mt-5 text-center text-xs text-slate-500">
+      © 2026 Aquaray Solar Solutions. सर्वाधिकार सुरक्षित।
+    </p>
+
+  </div>
+</section>
 
       {/* Footer / संपर्क */}
       {/* <footer className="bg-slate-950 px-5 py-10 text-white sm:px-8">
